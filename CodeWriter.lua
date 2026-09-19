@@ -76,6 +76,14 @@ local themes = {
 
 local currentTheme = themes.white
 
+-- Tabs State
+local tabs = {
+    {name = "Script 1", code = 'local part = Instance.new("Part")\npart.Parent = workspace'},
+    {name = "Script 2", code = 'print("Hello from Script 2!")'},
+    {name = "Script 3", code = '-- Type your code here'}
+}
+local currentTabIdx = 1
+
 local MainFrame = Instance.new("Frame")
 MainFrame.Size = UDim2.new(0, 930, 0, 440)
 MainFrame.Position = UDim2.new(0.5, -465, 0.5, -220)
@@ -137,9 +145,30 @@ Workspace.Position = UDim2.new(0, 0, 0, 32)
 Workspace.BackgroundTransparency = 1
 Workspace.Parent = MainFrame
 
+-- Tab Bar (Left side of workspace)
+local TabBar = Instance.new("ScrollingFrame")
+TabBar.Size = UDim2.new(0, 90, 1, -80)
+TabBar.Position = UDim2.new(0, 0, 0, 0)
+TabBar.BackgroundColor3 = currentTheme.panel
+TabBar.BorderSizePixel = 0
+TabBar.CanvasSize = UDim2.new(0, 0, 0, 0)
+TabBar.ScrollBarThickness = 2
+TabBar.Parent = Workspace
+
+local TabListLayout = Instance.new("UIListLayout")
+TabListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+TabListLayout.Padding = UDim.new(0, 4)
+TabListLayout.Parent = TabBar
+
+local TabListPadding = Instance.new("UIPadding")
+TabListPadding.PaddingTop = UDim.new(0, 6)
+TabListPadding.PaddingLeft = UDim.new(0, 6)
+TabListPadding.PaddingRight = UDim.new(0, 6)
+TabListPadding.Parent = TabBar
+
 local EditorScroll = Instance.new("ScrollingFrame")
-EditorScroll.Size = UDim2.new(1, -380, 1, -80)
-EditorScroll.Position = UDim2.new(0, 0, 0, 0)
+EditorScroll.Size = UDim2.new(1, -470, 1, -80)
+EditorScroll.Position = UDim2.new(0, 95, 0, 0)
 EditorScroll.BackgroundTransparency = 1
 EditorScroll.CanvasSize = UDim2.new(0, 0, 2, 0)
 EditorScroll.ScrollBarThickness = 3
@@ -157,35 +186,27 @@ LineNumBar.Parent = EditorScroll
 
 local function highlightText(rawText)
     local text = rawText:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;")
-    local placeholders = {}
-    
-    local function storePlaceholder(content)
-        table.insert(placeholders, content)
-        return "\0PL" .. #placeholders .. "\0"
+    local tokens = {}
+
+    local function tokenize(pattern, color)
+        text = text:gsub(pattern, function(match)
+            table.insert(tokens, '<font color="' .. color .. '">' .. match .. '</font>')
+            return "\0TK" .. #tokens .. "\0"
+        end)
     end
-    
-    text = text:gsub("(\"[^\"]-\")", function(str)
-        return storePlaceholder('<font color="#ce9178">' .. str .. '</font>')
-    end)
-    text = text:gsub("(\'[^\']-\')", function(str)
-        return storePlaceholder('<font color="#ce9178">' .. str .. '</font>')
-    end)
-    
-    text = text:gsub("(%-%-[^\r\n]*)", function(com)
-        return storePlaceholder('<font color="#6a9955">' .. com .. '</font>')
-    end)
-    
-    text = text:gsub("(%f[%d]%d+%.?%d*%f[%D])", '<font color="#b5cea8">%1</font>')
-    
+
+    tokenize("%-%-.+$", "#569cd6")
+    tokenize("%f[%d]%d+%.?%d*%f[%D]", "#b5cea8")
+
     local keywords = {"local", "if", "then", "end", "true", "false", "function", "return", "nil", "in", "do", "for", "while", "repeat", "until", "elseif", "else", "break"}
     for _, kw in ipairs(keywords) do
-        text = text:gsub("(%f[%a]" .. kw .. "%f[%A])", '<font color="#569cd6"><b>%1</b></font>')
+        tokenize("(%f[%a]" .. kw .. "%f[%A])", "#569cd6")
     end
-    
-    for i, ph in ipairs(placeholders) do
-        text = text:gsub("\0PL" .. i .. "\0", function() return ph end)
+
+    for i = #tokens, 1, -1 do
+        text = text:gsub("\0TK" .. i .. "\0", tokens[i])
     end
-    
+
     return text
 end
 
@@ -210,7 +231,7 @@ CodeBox.BackgroundTransparency = 1
 CodeBox.ClearTextOnFocus = false
 CodeBox.MultiLine = true
 CodeBox.TextWrapped = true
-CodeBox.Text = 'local part = Instance.new("Part")\npart.Parent = workspace'
+CodeBox.Text = tabs[1].code
 CodeBox.TextColor3 = currentTheme.text
 CodeBox.TextTransparency = 0.25
 CodeBox.TextSize = 12
@@ -219,10 +240,13 @@ CodeBox.TextXAlignment = Enum.TextXAlignment.Left
 CodeBox.TextYAlignment = Enum.TextYAlignment.Top
 CodeBox.Parent = EditorScroll
 
+local tabButtons = {}
+local updateTabs
+
 CodeBox:GetPropertyChangedSignal("Text"):Connect(function()
     HighlightLabel.Text = highlightText(CodeBox.Text)
+    tabs[currentTabIdx].code = CodeBox.Text
 end)
-HighlightLabel.Text = highlightText(CodeBox.Text)
 
 local SnippetSidebar = Instance.new("ScrollingFrame")
 SnippetSidebar.Size = UDim2.new(0, 50, 1, -80)
@@ -415,9 +439,9 @@ ActionBar.BackgroundColor3 = currentTheme.topBar
 ActionBar.BorderSizePixel = 0
 ActionBar.Parent = Workspace
 
-local function createActionBtn(name, xPos, color)
+local function createActionBtn(name, xPos, width, color)
     local btn = Instance.new("TextButton")
-    btn.Size = UDim2.new(0, 75, 0, 32)
+    btn.Size = UDim2.new(0, width or 75, 0, 32)
     btn.Position = UDim2.new(0, xPos, 0, 19)
     btn.BackgroundColor3 = currentTheme.btnBg
     btn.Text = name
@@ -432,8 +456,74 @@ local function createActionBtn(name, xPos, color)
     return btn
 end
 
-local InjectBtn = createActionBtn("Inject", 12)
-local ExecBtn = createActionBtn("Execute", 92)
+local InjectBtn = createActionBtn("Inject", 12, 60)
+local ExecBtn = createActionBtn("Execute", 78, 65)
+local ClearCodeBtn = createActionBtn("Clr Code", 149, 65)
+local ClearCacheBtn = createActionBtn("Clr Cache", 220, 68)
+
+ClearCodeBtn.MouseButton1Click:Connect(function()
+    CodeBox.Text = ""
+    logMessage("Cleared code box.", true)
+end)
+
+ClearCacheBtn.MouseButton1Click:Connect(function()
+    ConsoleLog.Text = "Ready to write code."
+    logMessage("Cleared console cache.", true)
+end)
+
+updateTabs = function()
+    for _, btn in ipairs(tabButtons) do
+        btn:Destroy()
+    end
+    tabButtons = {}
+    
+    for i, tab in ipairs(tabs) do
+        local tBtn = Instance.new("TextButton")
+        tBtn.Size = UDim2.new(1, 0, 0, 28)
+        tBtn.BackgroundColor3 = (i == currentTabIdx) and currentTheme.stroke or currentTheme.btnBg
+        tBtn.Text = tab.name
+        tBtn.TextColor3 = currentTheme.btnText
+        tBtn.TextSize = 10
+        tBtn.Font = Enum.Font.Code
+        tBtn.Parent = TabBar
+        
+        local corner = Instance.new("UICorner")
+        corner.CornerRadius = UDim.new(0, 4)
+        corner.Parent = tBtn
+        
+        tBtn.MouseButton1Click:Connect(function()
+            currentTabIdx = i
+            CodeBox.Text = tab.code
+            updateTabs()
+        end)
+        
+        table.insert(tabButtons, tBtn)
+    end
+    
+    -- Add Tab Button (+)
+    local addBtn = Instance.new("TextButton")
+    addBtn.Size = UDim2.new(1, 0, 0, 28)
+    addBtn.BackgroundColor3 = currentTheme.btnBg
+    addBtn.Text = "+ New Tab"
+    addBtn.TextColor3 = currentTheme.btnText
+    addBtn.TextSize = 10
+    addBtn.Font = Enum.Font.Code
+    addBtn.Parent = TabBar
+    
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 4)
+    corner.Parent = addBtn
+    
+    addBtn.MouseButton1Click:Connect(function()
+        table.insert(tabs, {name = "Script " .. (#tabs + 1), code = ""})
+        currentTabIdx = #tabs
+        CodeBox.Text = ""
+        updateTabs()
+    end)
+    table.insert(tabButtons, addBtn)
+    
+    TabBar.CanvasSize = UDim2.new(0, 0, 0, (#tabs + 1) * 32)
+end
 
 local themeNames = {"light", "midnight", "amber", "dark", "sky"}
 local themeKeys = {"white", "midnight", "amber", "dark", "sky"}
@@ -452,6 +542,7 @@ local function applyTheme(themeName)
     LineNumBar.TextColor3 = t.lineNum
     HighlightLabel.TextColor3 = t.highlight
     CodeBox.TextColor3 = t.text
+    TabBar.BackgroundColor3 = t.panel
     SnippetSidebar.BackgroundColor3 = t.panel
     HelperPanel.BackgroundColor3 = t.panel
     HelperTitle.TextColor3 = t.title
@@ -468,29 +559,34 @@ local function applyTheme(themeName)
     InjectBtn.TextColor3 = t.btnText
     ExecBtn.BackgroundColor3 = t.btnBg
     ExecBtn.TextColor3 = t.btnText
+    ClearCodeBtn.BackgroundColor3 = t.btnBg
+    ClearCodeBtn.TextColor3 = t.btnText
+    ClearCacheBtn.BackgroundColor3 = t.btnBg
+    ClearCacheBtn.TextColor3 = t.btnText
     
     for _, tBtn in ipairs(themeButtons) do
         tBtn.BackgroundColor3 = t.btnBg
         tBtn.TextColor3 = t.btnText
     end
+    
+    updateTabs()
 end
 
-local startX = 172
+local startX = 294
 for i, name in ipairs(themeNames) do
     local key = themeKeys[i]
-    local tBtn = createActionBtn(name, startX)
-    tBtn.Size = UDim2.new(0, 58, 0, 32)
+    local tBtn = createActionBtn(name, startX, 52)
     tBtn.MouseButton1Click:Connect(function()
         applyTheme(key)
     end)
     table.insert(themeButtons, tBtn)
-    startX = startX + 62
+    startX = startX + 56
 end
 
 local isInjected = false
 
 InjectBtn.MouseButton1Click:Connect(function()
-    InjectBtn.Text = "Injecting..."
+    InjectBtn.Text = "Inject..."
     task.wait(0.5)
     isInjected = true
     InjectBtn.Text = "Injected"
@@ -516,3 +612,5 @@ ExecBtn.MouseButton1Click:Connect(function()
         logMessage("Bad script: " .. tostring(err), false)
     end
 end)
+
+updateTabs()
