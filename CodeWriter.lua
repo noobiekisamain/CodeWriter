@@ -1,17 +1,29 @@
 local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 local StarterGui = game:GetService("StarterGui")
 local RunService = game:GetService("RunService")
 
--- Force open the F9 Developer Console
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+-- Safely attempt to force open the F9 Developer Console
 pcall(function()
     StarterGui:SetCore("DevConsoleVisible", true)
 end)
 
-local executorName = identifyexecutor and identifyexecutor() or "Unknown Executor"
-local platformName = RunService:GetPlatform().Name or "Unknown"
+-- Safe executor and platform identification
+local executorName = "Unknown Executor"
+pcall(function()
+    if identifyexecutor then
+        executorName = identifyexecutor()
+    end
+end)
 
+local platformName = "Unknown"
+pcall(function()
+    platformName = tostring(RunService:GetPlatform())
+end)
+
+-- Print the text and symbols into the console output
 print([[
 ==================================================
    _____          _        __          ____ _            
@@ -31,6 +43,7 @@ print([[
 ==================================================
 ]])
 
+-- Clean up any existing GUI
 if PlayerGui:FindFirstChild("CodeWriter") then
     PlayerGui.CodeWriter:Destroy()
 end
