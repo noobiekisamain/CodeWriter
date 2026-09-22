@@ -62,7 +62,8 @@ local themes = {
         panel = Color3.fromRGB(245, 245, 245),
         btnBg = Color3.fromRGB(230, 230, 230),
         btnText = Color3.fromRGB(40, 40, 40),
-        lineNum = Color3.fromRGB(150, 150, 150)
+        lineNum = Color3.fromRGB(150, 150, 150),
+        defaultText = Color3.fromRGB(30, 30, 30)
     },
     midnight = {
         main = Color3.fromRGB(10, 15, 25),
@@ -72,7 +73,8 @@ local themes = {
         panel = Color3.fromRGB(13, 20, 32),
         btnBg = Color3.fromRGB(20, 30, 48),
         btnText = Color3.fromRGB(220, 230, 245),
-        lineNum = Color3.fromRGB(80, 100, 130)
+        lineNum = Color3.fromRGB(80, 100, 130),
+        defaultText = Color3.fromRGB(220, 230, 245)
     },
     amber = {
         main = Color3.fromRGB(15, 10, 5),
@@ -82,7 +84,8 @@ local themes = {
         panel = Color3.fromRGB(20, 13, 6),
         btnBg = Color3.fromRGB(35, 22, 10),
         btnText = Color3.fromRGB(255, 176, 0),
-        lineNum = Color3.fromRGB(120, 80, 30)
+        lineNum = Color3.fromRGB(120, 80, 30),
+        defaultText = Color3.fromRGB(255, 220, 150)
     },
     dark = {
         main = Color3.fromRGB(18, 18, 18),
@@ -92,7 +95,8 @@ local themes = {
         panel = Color3.fromRGB(22, 22, 22),
         btnBg = Color3.fromRGB(35, 35, 35),
         btnText = Color3.fromRGB(200, 200, 210),
-        lineNum = Color3.fromRGB(100, 100, 110)
+        lineNum = Color3.fromRGB(100, 100, 110),
+        defaultText = Color3.fromRGB(220, 220, 220)
     },
     sky = {
         main = Color3.fromRGB(20, 30, 45),
@@ -102,7 +106,8 @@ local themes = {
         panel = Color3.fromRGB(24, 36, 54),
         btnBg = Color3.fromRGB(36, 54, 82),
         btnText = Color3.fromRGB(135, 206, 250),
-        lineNum = Color3.fromRGB(90, 125, 160)
+        lineNum = Color3.fromRGB(90, 125, 160),
+        defaultText = Color3.fromRGB(220, 235, 250)
     },
     matrix = {
         main = Color3.fromRGB(5, 15, 5),
@@ -112,7 +117,8 @@ local themes = {
         panel = Color3.fromRGB(6, 20, 6),
         btnBg = Color3.fromRGB(12, 40, 12),
         btnText = Color3.fromRGB(50, 255, 50),
-        lineNum = Color3.fromRGB(40, 120, 40)
+        lineNum = Color3.fromRGB(40, 120, 40),
+        defaultText = Color3.fromRGB(180, 255, 180)
     },
     sunset = {
         main = Color3.fromRGB(30, 12, 25),
@@ -122,7 +128,8 @@ local themes = {
         panel = Color3.fromRGB(35, 15, 30),
         btnBg = Color3.fromRGB(55, 22, 45),
         btnText = Color3.fromRGB(255, 140, 105),
-        lineNum = Color3.fromRGB(130, 70, 95)
+        lineNum = Color3.fromRGB(130, 70, 95),
+        defaultText = Color3.fromRGB(255, 220, 210)
     },
     cyberpunk = {
         main = Color3.fromRGB(15, 10, 25),
@@ -132,7 +139,8 @@ local themes = {
         panel = Color3.fromRGB(20, 12, 32),
         btnBg = Color3.fromRGB(35, 20, 55),
         btnText = Color3.fromRGB(255, 0, 128),
-        lineNum = Color3.fromRGB(120, 60, 140)
+        lineNum = Color3.fromRGB(120, 60, 140),
+        defaultText = Color3.fromRGB(240, 210, 245)
     },
     ocean = {
         main = Color3.fromRGB(10, 25, 35),
@@ -142,7 +150,8 @@ local themes = {
         panel = Color3.fromRGB(13, 30, 42),
         btnBg = Color3.fromRGB(20, 48, 66),
         btnText = Color3.fromRGB(0, 180, 216),
-        lineNum = Color3.fromRGB(70, 110, 135)
+        lineNum = Color3.fromRGB(70, 110, 135),
+        defaultText = Color3.fromRGB(200, 235, 245)
     },
     coffee = {
         main = Color3.fromRGB(30, 22, 18),
@@ -152,7 +161,8 @@ local themes = {
         panel = Color3.fromRGB(35, 26, 21),
         btnBg = Color3.fromRGB(52, 39, 31),
         btnText = Color3.fromRGB(210, 160, 120),
-        lineNum = Color3.fromRGB(110, 90, 75)
+        lineNum = Color3.fromRGB(110, 90, 75),
+        defaultText = Color3.fromRGB(240, 220, 205)
     },
     lavender = {
         main = Color3.fromRGB(22, 18, 32),
@@ -162,7 +172,8 @@ local themes = {
         panel = Color3.fromRGB(26, 21, 38),
         btnBg = Color3.fromRGB(40, 32, 58),
         btnText = Color3.fromRGB(190, 150, 230),
-        lineNum = Color3.fromRGB(100, 85, 130)
+        lineNum = Color3.fromRGB(100, 85, 130),
+        defaultText = Color3.fromRGB(230, 220, 245)
     },
     emerald = {
         main = Color3.fromRGB(12, 28, 20),
@@ -172,7 +183,8 @@ local themes = {
         panel = Color3.fromRGB(15, 33, 23),
         btnBg = Color3.fromRGB(24, 52, 36),
         btnText = Color3.fromRGB(52, 211, 153),
-        lineNum = Color3.fromRGB(75, 120, 90)
+        lineNum = Color3.fromRGB(75, 120, 90),
+        defaultText = Color3.fromRGB(210, 245, 225)
     },
     crimson = {
         main = Color3.fromRGB(32, 12, 15),
@@ -182,7 +194,8 @@ local themes = {
         panel = Color3.fromRGB(37, 14, 18),
         btnBg = Color3.fromRGB(58, 23, 28),
         btnText = Color3.fromRGB(248, 113, 113),
-        lineNum = Color3.fromRGB(130, 75, 80)
+        lineNum = Color3.fromRGB(130, 75, 80),
+        defaultText = Color3.fromRGB(255, 220, 220)
     },
     gold = {
         main = Color3.fromRGB(28, 24, 10),
@@ -192,7 +205,8 @@ local themes = {
         panel = Color3.fromRGB(33, 28, 12),
         btnBg = Color3.fromRGB(50, 43, 18),
         btnText = Color3.fromRGB(250, 204, 21),
-        lineNum = Color3.fromRGB(120, 105, 50)
+        lineNum = Color3.fromRGB(120, 105, 50),
+        defaultText = Color3.fromRGB(255, 245, 210)
     },
     slate = {
         main = Color3.fromRGB(25, 28, 36),
@@ -202,7 +216,8 @@ local themes = {
         panel = Color3.fromRGB(29, 33, 42),
         btnBg = Color3.fromRGB(44, 49, 63),
         btnText = Color3.fromRGB(148, 163, 184),
-        lineNum = Color3.fromRGB(95, 105, 125)
+        lineNum = Color3.fromRGB(95, 105, 125),
+        defaultText = Color3.fromRGB(220, 225, 235)
     }
 }
 
@@ -351,7 +366,7 @@ local annotations = {
 
 local function highlightText(rawText)
     if not rawText or rawText == "" then return "" end
-    local text = rawText:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;")
+    local text = rawText:gsub("&", "&amp;"):gsub("<", "&lt;")
     local snippets = {}
 
     local function substitute(pattern, color)
@@ -368,13 +383,13 @@ local function highlightText(rawText)
     substitute("%d+%.?%d*", "#b5cea8")
 
     for _, fn in ipairs(functions) do
-        substitute("([^%w_%z])(" .. fn .. ")(%f[%D])", "%1<font color=\"#DCDCAA\">%2</font>%3")
-        substitute("^(%z?" .. fn .. ")(%f[%D])", "<font color=\"#DCDCAA\">%1</font>%2")
+        substitute("([^%w_%z])(" .. fn  .. ")(%f[%D])", "%1<font color=\"#DCDCAA\">%2</font>%3")
+        substitute("^(%z?" .. fn  .. ")(%f[%D])", "<font color=\"#DCDCAA\">%1</font>%2")
     end
 
     for _, c in ipairs(constants) do
-        substitute("([^%w_%z])(" .. c .. ")(%f[%D])", "%1<font color=\"#569CD6\">%2</font>%3")
-        substitute("^(%z?" .. c .. ")(%f[%D])", "<font color=\"#569CD6\">%1</font>%2")
+        substitute("([^%w_%z])(" .. c  .. ")(%f[%D])", "%1<font color=\"#569CD6\">%2</font>%3")
+        substitute("^(%z?" .. c  .. ")(%f[%D])", "<font color=\"#569CD6\">%1</font>%2")
     end
 
     for _, ann in ipairs(annotations) do
@@ -383,8 +398,8 @@ local function highlightText(rawText)
     end
 
     for _, kw in ipairs(keywords) do
-        substitute("([^%w_%z])(" .. kw .. ")(%f[%D])", "%1<font color=\"#007ACC\">%2</font>%3")
-        substitute("^(%z?" .. kw .. ")(%f[%D])", "<font color=\"#007ACC\">%1</font>%2")
+        substitute("([^%w_%z])(" .. kw  .. ")(%f[%D])", "%1<font color=\"#007ACC\">%2</font>%3")
+        substitute("^(%z?" .. kw  .. ")(%f[%D])", "<font color=\"#007ACC\">%1</font>%2")
     end
 
     for placeholder, html in pairs(snippets) do
@@ -394,6 +409,7 @@ local function highlightText(rawText)
     return text
 end
 
+-- Syntax Highlight Background Layer (Renders colors behind the real text box)
 local HighlightLabel = Instance.new("TextLabel")
 HighlightLabel.Size = UDim2.new(1, -45, 1, 0)
 HighlightLabel.Position = UDim2.new(0, 40, 0, 0)
@@ -407,6 +423,7 @@ HighlightLabel.TextXAlignment = Enum.TextXAlignment.Left
 HighlightLabel.TextYAlignment = Enum.TextYAlignment.Top
 HighlightLabel.Parent = EditorScroll
 
+-- Real TextBox Layer (Has visible text, native cursor, and native selection highlights)
 local CodeBox = Instance.new("TextBox")
 CodeBox.Size = UDim2.new(1, -45, 1, 0)
 CodeBox.Position = UDim2.new(0, 40, 0, 0)
@@ -415,8 +432,8 @@ CodeBox.ClearTextOnFocus = false
 CodeBox.MultiLine = true
 CodeBox.TextWrapped = true
 CodeBox.Text = tabs[1].code
-CodeBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-CodeBox.TextTransparency = 1
+CodeBox.TextColor3 = currentTheme.defaultText
+CodeBox.TextTransparency = 0 -- Enabled so native Windows selection / cursor shows properly
 CodeBox.TextSize = 12
 CodeBox.Font = Enum.Font.Code
 CodeBox.TextXAlignment = Enum.TextXAlignment.Left
@@ -668,10 +685,371 @@ local function createActionBtn(name, xPos, width, color)
     return btn
 end
 
-local InjectBtn = createActionBtn("Inject", 12, 60)
-local ExecBtn = createActionBtn("Execute", 78, 65)
-local ClearCodeBtn = createActionBtn("Clr Code", 149, 65)
-local ClearCacheBtn = createActionBtn("Clr Cache", 220, 68)
+local InjectBtn = createActionBtn("Inject", 12, 55)
+local ExecBtn = createActionBtn("Execute", 71, 60)
+local ClearCodeBtn = createActionBtn("Clr Code", 135, 62)
+local ClearCacheBtn = createActionBtn("Clr Cache", 201, 62)
+local PresetsBtn = createActionBtn("Presets", 267, 62)
+
+local PresetsMenu = Instance.new("ScrollingFrame")
+PresetsMenu.Size = UDim2.new(0, 140, 0, 200)
+PresetsMenu.Position = UDim2.new(0, 267, 1, -275)
+PresetsMenu.BackgroundColor3 = currentTheme.panel
+PresetsMenu.BorderSizePixel = 0
+PresetsMenu.Visible = false
+PresetsMenu.CanvasSize = UDim2.new(0, 0, 0, 290)
+PresetsMenu.ScrollBarThickness = 2
+PresetsMenu.ZIndex = 10
+PresetsMenu.Parent = Workspace
+
+local PresetsStroke = Instance.new("UIStroke")
+PresetsStroke.Color = currentTheme.stroke
+PresetsStroke.Thickness = 1
+PresetsStroke.Parent = PresetsMenu
+
+local PresetsLayout = Instance.new("UIListLayout")
+PresetsLayout.SortOrder = Enum.SortOrder.LayoutOrder
+PresetsLayout.Padding = UDim.new(0, 4)
+PresetsLayout.Parent = PresetsMenu
+
+local PresetsPadding = Instance.new("UIPadding")
+PresetsPadding.PaddingTop = UDim.new(0, 6)
+PresetsPadding.PaddingLeft = UDim.new(0, 6)
+PresetsPadding.PaddingRight = UDim.new(0, 6)
+PresetsPadding.Parent = PresetsMenu
+
+PresetsBtn.MouseButton1Click:Connect(function()
+    PresetsMenu.Visible = not PresetsMenu.Visible
+end)
+
+local presetsData = {
+    {
+        name = "obsidian", 
+        code = [[-- Obsidian UI Preset
+local success, Obsidian = pcall(function()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/(obsidian)"))()
+end)
+
+if not success or not Obsidian then
+    print("[Obsidian Mock] Library loaded in safe preview mode!")
+    Obsidian = {
+        New = function(title)
+            print("Created Window:", title)
+            return {
+                NewTab = function(_, name)
+                    print("Created Tab:", name)
+                    return {
+                        NewSection = function(_, secName)
+                            print("Created Section:", secName)
+                            return {
+                                NewButton = function(_, text, desc, cb) print("Button:", text); cb() end,
+                                NewToggle = function(_, text, desc, cb) print("Toggle:", text); cb(true) end,
+                                NewSlider = function(_, text, desc, min, max, cb) print("Slider:", text); cb(50) end,
+                                NewDropdown = function(_, text, desc, opts, cb) print("Dropdown:", text); cb(opts[1]) end
+                            }
+                        end
+                    }
+                end
+            }
+        end
+    }
+end
+
+local Window = Obsidian:New("Obsidian UI")
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("Player Features")
+
+Section:NewButton("Godmode", "Makes you invincible", function()
+    print("Godmode activated!")
+end)
+
+Section:NewToggle("Auto Farm", "Enables automatic farming", function(state)
+    print("Auto Farm set to:", state)
+end)
+
+Section:NewSlider("Walkspeed", "Changes character speed", 16, 250, function(value)
+    print("Walkspeed set to:", value)
+end)
+
+Section:NewDropdown("Weapons", "Select your weapon", {"Sword", "Bow", "Staff"}, function(selected)
+    print("Selected weapon:", selected)
+end)]]
+    },
+    {
+        name = "windui", 
+        code = [[-- WindUI Preset
+local success, WindUI = pcall(function()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/(windui)"))()
+end)
+
+if not success or not WindUI then
+    print("[WindUI Mock] Library loaded in safe preview mode!")
+    WindUI = {
+        CreateWindow = function(config)
+            print("Created Window:", config.Title)
+            return {
+                Tab = function(_, tabConfig)
+                    print("Created Tab:", tabConfig.Title)
+                    return {
+                        Button = function(_, cfg) print("Button:", cfg.Title); cfg.Callback() end,
+                        Toggle = function(_, cfg) print("Toggle:", cfg.Title); cfg.Callback(true) end,
+                        Slider = function(_, cfg) print("Slider:", cfg.Title); cfg.Callback(cfg.Default) end,
+                        Dropdown = function(_, cfg) print("Dropdown:", cfg.Title); cfg.Callback(cfg.Values[1]) end
+                    }
+                end
+            }
+        end
+    }
+end
+
+local Window = WindUI:CreateWindow({ Title = "WindUI Hub", Theme = "Dark" })
+local Tab = Window:Tab({ Title = "Main", Icon = "home" })
+
+Tab:Button({ Title = "Print Hello", Callback = function() print("Hello from WindUI!") end })
+Tab:Toggle({ Title = "Infinite Jump", Default = false, Callback = function(v) print("Infinite Jump:", v) end })
+Tab:Slider({ Title = "JumpPower", Min = 50, Max = 300, Default = 50, Callback = function(v) print("JumpPower:", v) end })
+Tab:Dropdown({ Title = "Select Team", Values = {"Red", "Blue", "Green"}, Callback = function(v) print("Chosen team:", v) end })]]
+    },
+    {
+        name = "fluent", 
+        code = [[-- Fluent UI Preset
+local success, Fluent = pcall(function()
+    return loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+end)
+
+if not success or not Fluent then
+    print("[Fluent Mock] Library loaded in safe preview mode!")
+    Fluent = {
+        CreateWindow = function(config)
+            return {
+                AddTab = function(_, tabConfig)
+                    return {
+                        AddButton = function(_, cfg) print("Button:", cfg.Title); cfg.Callback() end,
+                        AddToggle = function(_, name, cfg) 
+                            print("Toggle:", cfg.Title)
+                            return { OnChanged = function(_, cb) cb(cfg.Default) end }
+                        end,
+                        AddSlider = function(_, name, cfg)
+                            print("Slider:", cfg.Title)
+                            return { OnChanged = function(_, cb) cb(cfg.Default) end }
+                        end,
+                        AddDropdown = function(_, name, cfg)
+                            print("Dropdown:", cfg.Title)
+                            return { OnChanged = function(_, cb) cb(cfg.Values[cfg.Default]) end }
+                        end
+                    }
+                end,
+                Notify = function(_, notif) print("Notification:", notif.Title, "-", notif.Content) end
+            }
+        end
+    }
+end
+
+local Window = Fluent:CreateWindow({ Title = "Fluent UI", SubTitle = "by dawid" })
+local Tabs = { Main = Window:AddTab({ Title = "Main" }) }
+
+Tabs.Main:AddButton({ Title = "Button", Description = "Click me", Callback = function() print("Button clicked!") end })
+Tabs.Main:AddToggle("MyToggle", { Title = "Toggle", Default = false })
+Tabs.Main:AddSlider("Slider", { Title = "Speed", Min = 16, Max = 200, Default = 16 })
+Tabs.Main:AddDropdown("Dropdown", { Title = "Dropdown", Values = {"One", "Two"}, Default = 1 })]]
+    },
+    {
+        name = "linoria", 
+        code = [[-- LinoriaLib Preset
+local success, Library = pcall(function()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/Library.lua"))()
+end)
+
+if not success or not Library then
+    print("[Linoria Mock] Library loaded in safe preview mode!")
+    Library = {
+        CreateWindow = function(config)
+            return {
+                AddTab = function(_, name)
+                    return {
+                        AddLeftGroupbox = function(_, groupName)
+                            return {
+                                AddButton = function(_, text, cb) print("Button:", text); cb() end,
+                                AddToggle = function(_, name, cfg) print("Toggle:", cfg.Text) end,
+                                AddSlider = function(_, name, cfg) print("Slider:", cfg.Text) end,
+                                AddDropdown = function(_, name, cfg) print("Dropdown:", cfg.Text) end
+                            }
+                        end
+                    }
+                end
+            }
+        end
+    }
+end
+
+local Window = Library:CreateWindow({ Title = 'Linoria UI' })
+local Tabbox = Window:AddTab('Main'):AddLeftGroupbox('Controls')
+
+Tabbox:AddButton('Print Button', function() print('Button clicked!') end)
+Tabbox:AddToggle('MyToggle', { Text = 'Enable Feature', Default = false })
+Tabbox:AddSlider('MySlider', { Text = 'Walkspeed', Min = 16, Max = 200, Default = 16 })
+Tabbox:AddDropdown('MyDropdown', { Values = { 'Option 1', 'Option 2' }, Default = 1, Text = 'Choose' })]]
+    },
+    {
+        name = "rayfield", 
+        code = [[-- Rayfield Preset
+local success, Rayfield = pcall(function()
+    return loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+end)
+
+if not success or not Rayfield then
+    print("[Rayfield Mock] Library loaded in safe preview mode!")
+    Rayfield = {
+        CreateWindow = function(config)
+            return {
+                CreateTab = function(_, name)
+                    return {
+                        CreateButton = function(_, cfg) print("Button:", cfg.Name); cfg.Callback() end,
+                        CreateToggle = function(_, cfg) print("Toggle:", cfg.Name); cfg.Callback(cfg.CurrentValue) end,
+                        CreateSlider = function(_, cfg) print("Slider:", cfg.Name); cfg.Callback(cfg.CurrentValue) end,
+                        CreateDropdown = function(_, cfg) print("Dropdown:", cfg.Name); cfg.Callback(cfg.CurrentOption) end
+                    }
+                end
+            }
+        end
+    }
+end
+
+local Window = Rayfield:CreateWindow({ Name = "Rayfield Example" })
+local Tab = Window:CreateTab("Main", 4483362458)
+
+Tab:CreateButton({ Name = "Button Example", Callback = function() print("Clicked button") end })
+Tab:CreateToggle({ Name = "Toggle Example", CurrentValue = false, Callback = function(v) print("Toggle:", v) end })
+Tab:CreateSlider({ Name = "Slider Example", Range = {0, 100}, CurrentValue = 16, Callback = function(v) print("Slider:", v) end })
+Tab:CreateDropdown({ Name = "Dropdown Example", Options = {"Opt 1", "Opt 2"}, CurrentOption = "Opt 1", Callback = function(o) print("Dropdown:", o) end })]]
+    },
+    {
+        name = "orion", 
+        code = [[-- Orion Library Preset
+local success, OrionLib = pcall(function()
+    return loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+end)
+
+if not success or not OrionLib then
+    print("[Orion Mock] Library loaded in safe preview mode!")
+    OrionLib = {
+        MakeWindow = function(config)
+            return {
+                MakeTab = function(_, cfg)
+                    return {
+                        AddButton = function(_, cfg2) print("Button:", cfg2.Name); cfg2.Callback() end,
+                        AddToggle = function(_, cfg2) print("Toggle:", cfg2.Name); cfg2.Callback(true) end,
+                        AddSlider = function(_, cfg2) print("Slider:", cfg2.Name); cfg2.Callback(cfg2.Default) end,
+                        AddDropdown = function(_, cfg2) print("Dropdown:", cfg2.Name); cfg2.Callback(cfg2.Default) end
+                    }
+                end
+            }
+        end
+    }
+end
+
+local Window = OrionLib:MakeWindow({Name = "Orion Library"})
+local Tab = Window:MakeTab({Name = "Main Tab"})
+
+Tab:AddButton({ Name = "Button!", Callback = function() print("button pressed") end })
+Tab:AddToggle({ Name = "Toggle!", Default = false, Callback = function(v) print(v) end })
+Tab:AddSlider({ Name = "Slider!", Min = 0, Max = 100, Default = 50, Callback = function(v) print(v) end })
+Tab:AddDropdown({ Name = "Dropdown!", Default = "1", Options = {"1", "2"}, Callback = function(v) print(v) end })]]
+    },
+    {
+        name = "maclib", 
+        code = [[-- MacLib Preset
+local success, MacLib = pcall(function()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/(maclib)"))()
+end)
+
+if not success or not MacLib then
+    print("[MacLib Mock] Library loaded in safe preview mode!")
+    MacLib = {
+        Window = function(config)
+            return {
+                Tab = function(_, cfg)
+                    return {
+                        Section = function(_, cfg2)
+                            return {
+                                Button = function(_, cfg3) print("Button:", cfg3.Name); cfg3.Callback() end,
+                                Toggle = function(_, cfg3) print("Toggle:", cfg3.Name); cfg3.Callback(true) end,
+                                Slider = function(_, cfg3) print("Slider:", cfg3.Name); cfg3.Callback(cfg3.Default) end,
+                                Dropdown = function(_, cfg3) print("Dropdown:", cfg3.Name); cfg3.Callback(cfg3.Default) end
+                            }
+                        end
+                    }
+                end
+            }
+        end
+    }
+end
+
+local Window = MacLib:Window({ Title = "MacLib UI" })
+local Tab = Window:Tab({ Name = "Main" })
+local Group = Tab:Section({ Name = "Controls" })
+
+Group:Button({ Name = "Button", Callback = function() print("MacLib Button") end })
+Group:Toggle({ Name = "Toggle", Default = false, Callback = function(s) print("Toggle:", s) end })
+Group:Slider({ Name = "Slider", Min = 0, Max = 100, Default = 50, Callback = function(v) print("Slider:", v) end })
+Group:Dropdown({ Name = "Dropdown", Options = {"A", "B"}, Default = "A", Callback = function(o) print("Dropdown:", o) end })]]
+    },
+    {
+        name = "emerald", 
+        code = [[-- Emerald UI Preset
+local success, Emerald = pcall(function()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/(emerald)"))()
+end)
+
+if not success or not Emerald then
+    print("[Emerald Mock] Library loaded in safe preview mode!")
+    Emerald = {
+        CreateWindow = function(title)
+            return {
+                CreateTab = function(_, name)
+                    return {
+                        CreateButton = function(_, text, cb) print("Button:", text); cb() end,
+                        CreateToggle = function(_, text, cb) print("Toggle:", text); cb(true) end,
+                        CreateSlider = function(_, text, min, max, cb) print("Slider:", text); cb(70) end,
+                        CreateDropdown = function(_, text, opts, cb) print("Dropdown:", text); cb(opts[1]) end
+                    }
+                end
+            }
+        end
+    }
+end
+
+local Window = Emerald:CreateWindow("Emerald UI")
+local Tab = Window:CreateTab("Home")
+
+Tab:CreateButton("Click Me", function() print("Emerald Button clicked") end)
+Tab:CreateToggle("Auto Clicker", function(state) print("Toggle state:", state) end)
+Tab:CreateSlider("FOV Slider", 70, 120, function(val) print("FOV:", val) end)
+Tab:CreateDropdown("Mode", {"Easy", "Medium", "Hard"}, function(choice) print("Selected mode:", choice) end)]]
+    }
+}
+
+for _, preset in ipairs(presetsData) do
+    local pBtn = Instance.new("TextButton")
+    pBtn.Size = UDim2.new(1, 0, 0, 28)
+    pBtn.BackgroundColor3 = currentTheme.btnBg
+    pBtn.Text = preset.name
+    pBtn.TextColor3 = currentTheme.btnText
+    pBtn.TextSize = 10
+    pBtn.Font = Enum.Font.Code
+    pBtn.ZIndex = 11
+    pBtn.Parent = PresetsMenu
+    
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 4)
+    corner.Parent = pBtn
+    
+    pBtn.MouseButton1Click:Connect(function()
+        CodeBox.Text = preset.code
+        PresetsMenu.Visible = false
+        logMessage("Loaded preset: " .. preset.name, true)
+    end)
+end
 
 ClearCodeBtn.MouseButton1Click:Connect(function()
     CodeBox.Text = ""
@@ -751,7 +1129,7 @@ local function applyTheme(themeName)
     TitleLabel.TextColor3 = t.title
     CloseBtn.TextColor3 = t.title
     LineNumBar.TextColor3 = t.lineNum
-    CodeBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    CodeBox.TextColor3 = t.defaultText
     TabBar.BackgroundColor3 = t.panel
     SnippetSidebar.BackgroundColor3 = t.panel
     HelperPanel.BackgroundColor3 = t.panel
@@ -761,6 +1139,8 @@ local function applyTheme(themeName)
     ThemePanel.BackgroundColor3 = t.panel
     ThemeTitle.TextColor3 = t.title
     ActionBar.BackgroundColor3 = t.topBar
+    PresetsMenu.BackgroundColor3 = t.panel
+    PresetsStroke.Color = t.stroke
     
     for _, btn in ipairs(snippetButtons) do
         btn.BackgroundColor3 = t.btnBg
@@ -775,6 +1155,8 @@ local function applyTheme(themeName)
     ClearCodeBtn.TextColor3 = t.btnText
     ClearCacheBtn.BackgroundColor3 = t.btnBg
     ClearCacheBtn.TextColor3 = t.btnText
+    PresetsBtn.BackgroundColor3 = t.btnBg
+    PresetsBtn.TextColor3 = t.btnText
     
     for _, tBtn in ipairs(themeButtons) do
         tBtn.BackgroundColor3 = t.btnBg
