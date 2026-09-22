@@ -1,6 +1,35 @@
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+local StarterGui = game:GetService("StarterGui")
+local RunService = game:GetService("RunService")
+
+-- Force open the F9 Developer Console
+pcall(function()
+    StarterGui:SetCore("DevConsoleVisible", true)
+end)
+
+local executorName = identifyexecutor and identifyexecutor() or "Unknown Executor"
+local platformName = RunService:GetPlatform().Name or "Unknown"
+
+print([[
+==================================================
+   _____          _        __          ____ _            
+  / ____|        | |      \ \        / / (_)           
+ | |     ___   __| | ___   \ \  /\  / /| |_  ___ _ __  
+ | |    / _ \ / _` |/ _ \   \ \/  \/ / | | |/ _ \ '__| 
+ | |___| (_) | (_| |  __/    \  /\  /  | | |  __/ |    
+  \_____\___/ \__,_|\___|     \/  \/   |_|_|\___|_|    
+==================================================
+               BUILT BY NOOBIEKISA             
+==================================================
+[INFO] Username:    ]] .. LocalPlayer.Name .. [[
+[INFO] Display Name:]] .. LocalPlayer.DisplayName .. [[
+[INFO] User ID:     ]] .. LocalPlayer.UserId .. [[
+[INFO] Platform:    ]] .. platformName .. [[
+[INFO] Executor:    ]] .. executorName .. [[
+==================================================
+]])
 
 if PlayerGui:FindFirstChild("CodeWriter") then
     PlayerGui.CodeWriter:Destroy()
@@ -17,8 +46,6 @@ local themes = {
         topBar = Color3.fromRGB(240, 240, 240),
         title = Color3.fromRGB(30, 30, 30),
         stroke = Color3.fromRGB(220, 220, 220),
-        text = Color3.fromRGB(30, 30, 30),
-        highlight = Color3.fromRGB(30, 30, 30),
         panel = Color3.fromRGB(245, 245, 245),
         btnBg = Color3.fromRGB(230, 230, 230),
         btnText = Color3.fromRGB(40, 40, 40),
@@ -29,8 +56,6 @@ local themes = {
         topBar = Color3.fromRGB(15, 22, 36),
         title = Color3.fromRGB(220, 230, 245),
         stroke = Color3.fromRGB(30, 45, 70),
-        text = Color3.fromRGB(220, 230, 245),
-        highlight = Color3.fromRGB(220, 230, 245),
         panel = Color3.fromRGB(13, 20, 32),
         btnBg = Color3.fromRGB(20, 30, 48),
         btnText = Color3.fromRGB(220, 230, 245),
@@ -41,8 +66,6 @@ local themes = {
         topBar = Color3.fromRGB(25, 16, 8),
         title = Color3.fromRGB(255, 176, 0),
         stroke = Color3.fromRGB(60, 35, 10),
-        text = Color3.fromRGB(255, 200, 80),
-        highlight = Color3.fromRGB(255, 200, 80),
         panel = Color3.fromRGB(20, 13, 6),
         btnBg = Color3.fromRGB(35, 22, 10),
         btnText = Color3.fromRGB(255, 176, 0),
@@ -53,8 +76,6 @@ local themes = {
         topBar = Color3.fromRGB(25, 25, 25),
         title = Color3.fromRGB(240, 240, 245),
         stroke = Color3.fromRGB(40, 40, 40),
-        text = Color3.fromRGB(220, 220, 230),
-        highlight = Color3.fromRGB(220, 220, 230),
         panel = Color3.fromRGB(22, 22, 22),
         btnBg = Color3.fromRGB(35, 35, 35),
         btnText = Color3.fromRGB(200, 200, 210),
@@ -65,28 +86,125 @@ local themes = {
         topBar = Color3.fromRGB(28, 42, 64),
         title = Color3.fromRGB(135, 206, 250),
         stroke = Color3.fromRGB(45, 75, 115),
-        text = Color3.fromRGB(224, 255, 255),
-        highlight = Color3.fromRGB(224, 255, 255),
         panel = Color3.fromRGB(24, 36, 54),
         btnBg = Color3.fromRGB(36, 54, 82),
         btnText = Color3.fromRGB(135, 206, 250),
         lineNum = Color3.fromRGB(90, 125, 160)
+    },
+    matrix = {
+        main = Color3.fromRGB(5, 15, 5),
+        topBar = Color3.fromRGB(8, 25, 8),
+        title = Color3.fromRGB(50, 255, 50),
+        stroke = Color3.fromRGB(15, 60, 15),
+        panel = Color3.fromRGB(6, 20, 6),
+        btnBg = Color3.fromRGB(12, 40, 12),
+        btnText = Color3.fromRGB(50, 255, 50),
+        lineNum = Color3.fromRGB(40, 120, 40)
+    },
+    sunset = {
+        main = Color3.fromRGB(30, 12, 25),
+        topBar = Color3.fromRGB(45, 18, 38),
+        title = Color3.fromRGB(255, 140, 105),
+        stroke = Color3.fromRGB(75, 30, 60),
+        panel = Color3.fromRGB(35, 15, 30),
+        btnBg = Color3.fromRGB(55, 22, 45),
+        btnText = Color3.fromRGB(255, 140, 105),
+        lineNum = Color3.fromRGB(130, 70, 95)
+    },
+    cyberpunk = {
+        main = Color3.fromRGB(15, 10, 25),
+        topBar = Color3.fromRGB(25, 15, 40),
+        title = Color3.fromRGB(255, 0, 128),
+        stroke = Color3.fromRGB(70, 20, 90),
+        panel = Color3.fromRGB(20, 12, 32),
+        btnBg = Color3.fromRGB(35, 20, 55),
+        btnText = Color3.fromRGB(255, 0, 128),
+        lineNum = Color3.fromRGB(120, 60, 140)
+    },
+    ocean = {
+        main = Color3.fromRGB(10, 25, 35),
+        topBar = Color3.fromRGB(16, 38, 52),
+        title = Color3.fromRGB(0, 180, 216),
+        stroke = Color3.fromRGB(30, 70, 95),
+        panel = Color3.fromRGB(13, 30, 42),
+        btnBg = Color3.fromRGB(20, 48, 66),
+        btnText = Color3.fromRGB(0, 180, 216),
+        lineNum = Color3.fromRGB(70, 110, 135)
+    },
+    coffee = {
+        main = Color3.fromRGB(30, 22, 18),
+        topBar = Color3.fromRGB(42, 31, 25),
+        title = Color3.fromRGB(210, 160, 120),
+        stroke = Color3.fromRGB(70, 52, 42),
+        panel = Color3.fromRGB(35, 26, 21),
+        btnBg = Color3.fromRGB(52, 39, 31),
+        btnText = Color3.fromRGB(210, 160, 120),
+        lineNum = Color3.fromRGB(110, 90, 75)
+    },
+    lavender = {
+        main = Color3.fromRGB(22, 18, 32),
+        topBar = Color3.fromRGB(32, 26, 46),
+        title = Color3.fromRGB(190, 150, 230),
+        stroke = Color3.fromRGB(60, 48, 85),
+        panel = Color3.fromRGB(26, 21, 38),
+        btnBg = Color3.fromRGB(40, 32, 58),
+        btnText = Color3.fromRGB(190, 150, 230),
+        lineNum = Color3.fromRGB(100, 85, 130)
+    },
+    emerald = {
+        main = Color3.fromRGB(12, 28, 20),
+        topBar = Color3.fromRGB(18, 40, 28),
+        title = Color3.fromRGB(52, 211, 153),
+        stroke = Color3.fromRGB(35, 75, 52),
+        panel = Color3.fromRGB(15, 33, 23),
+        btnBg = Color3.fromRGB(24, 52, 36),
+        btnText = Color3.fromRGB(52, 211, 153),
+        lineNum = Color3.fromRGB(75, 120, 90)
+    },
+    crimson = {
+        main = Color3.fromRGB(32, 12, 15),
+        topBar = Color3.fromRGB(46, 18, 22),
+        title = Color3.fromRGB(248, 113, 113),
+        stroke = Color3.fromRGB(80, 32, 38),
+        panel = Color3.fromRGB(37, 14, 18),
+        btnBg = Color3.fromRGB(58, 23, 28),
+        btnText = Color3.fromRGB(248, 113, 113),
+        lineNum = Color3.fromRGB(130, 75, 80)
+    },
+    gold = {
+        main = Color3.fromRGB(28, 24, 10),
+        topBar = Color3.fromRGB(40, 34, 14),
+        title = Color3.fromRGB(250, 204, 21),
+        stroke = Color3.fromRGB(75, 64, 25),
+        panel = Color3.fromRGB(33, 28, 12),
+        btnBg = Color3.fromRGB(50, 43, 18),
+        btnText = Color3.fromRGB(250, 204, 21),
+        lineNum = Color3.fromRGB(120, 105, 50)
+    },
+    slate = {
+        main = Color3.fromRGB(25, 28, 36),
+        topBar = Color3.fromRGB(35, 39, 50),
+        title = Color3.fromRGB(148, 163, 184),
+        stroke = Color3.fromRGB(60, 68, 86),
+        panel = Color3.fromRGB(29, 33, 42),
+        btnBg = Color3.fromRGB(44, 49, 63),
+        btnText = Color3.fromRGB(148, 163, 184),
+        lineNum = Color3.fromRGB(95, 105, 125)
     }
 }
 
 local currentTheme = themes.white
 
--- Tabs State
 local tabs = {
     {name = "Script 1", code = 'local part = Instance.new("Part")\npart.Parent = workspace'},
-    {name = "Script 2", code = 'print("Hello from Script 2!")'},
-    {name = "Script 3", code = '-- Type your code here'}
+    {name = "Script 2", code = 'print("Hello from Script 1!")'},
+    {name = "Script 3", code = 'print("Type your code here")'}
 }
 local currentTabIdx = 1
 
 local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, 930, 0, 440)
-MainFrame.Position = UDim2.new(0.5, -465, 0.5, -220)
+MainFrame.Size = UDim2.new(0, 1110, 0, 440)
+MainFrame.Position = UDim2.new(0.5, -555, 0.5, -220)
 MainFrame.BackgroundColor3 = currentTheme.main
 MainFrame.BorderSizePixel = 0
 MainFrame.Active = true
@@ -145,7 +263,6 @@ Workspace.Position = UDim2.new(0, 0, 0, 32)
 Workspace.BackgroundTransparency = 1
 Workspace.Parent = MainFrame
 
--- Tab Bar (Left side of workspace)
 local TabBar = Instance.new("ScrollingFrame")
 TabBar.Size = UDim2.new(0, 90, 1, -80)
 TabBar.Position = UDim2.new(0, 0, 0, 0)
@@ -167,7 +284,7 @@ TabListPadding.PaddingRight = UDim.new(0, 6)
 TabListPadding.Parent = TabBar
 
 local EditorScroll = Instance.new("ScrollingFrame")
-EditorScroll.Size = UDim2.new(1, -470, 1, -80)
+EditorScroll.Size = UDim2.new(1, -650, 1, -80)
 EditorScroll.Position = UDim2.new(0, 95, 0, 0)
 EditorScroll.BackgroundTransparency = 1
 EditorScroll.CanvasSize = UDim2.new(0, 0, 2, 0)
@@ -184,27 +301,81 @@ LineNumBar.Font = Enum.Font.Code
 LineNumBar.TextYAlignment = Enum.TextYAlignment.Top
 LineNumBar.Parent = EditorScroll
 
-local function highlightText(rawText)
-    local text = rawText:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;")
-    local tokens = {}
+local keywords = {
+    "local", "function", "if", "then", "else", "elseif", "end", "for", "in", 
+    "do", "while", "repeat", "until", "return", "break", "continue", "and", 
+    "or", "not", "type", "export"
+}
 
-    local function tokenize(pattern, color)
+local constants = {
+    "self", "true", "false", "nil", "_G", "_VERSION", "script", 
+    "math.huge", "math.pi", "utf8.charpattern"
+}
+
+local functions = {
+    "print", "warn", "error", "assert", "type", "typeof", "tonumber", "tostring", 
+    "select", "rawget", "rawset", "rawequal", "collectgarbage", "xpcall", "pcall",
+    "table.insert", "table.remove", "table.concat", "table.sort", "table.clear", 
+    "table.create", "table.clone", "table.pack", "table.unpack",
+    "string.byte", "string.char", "string.find", "string.format", "string.gmatch", 
+    "string.gsub", "string.len", "string.lower", "string.upper", "string.match", 
+    "string.rep", "string.reverse", "string.sub", "string.split",
+    "math.abs", "math.acos", "math.asin", "math.atan", "math.atan2", "math.ceil", 
+    "math.floor", "math.round", "math.cos", "math.sin", "math.tan", "math.cosh", 
+    "math.sinh", "math.tanh", "math.deg", "math.rad", "math.exp", "math.log", 
+    "math.log10", "math.max", "math.min", "math.pow", "math.sqrt", "math.modf", 
+    "math.fmod", "math.noise", "math.random", "math.randomseed", "math.clamp", "math.sign",
+    "coroutine.create", "coroutine.resume", "coroutine.yield", "coroutine.status", 
+    "coroutine.running", "coroutine.wrap", "coroutine.isyieldable",
+    "utf8.char", "utf8.codepoint", "utf8.codes", "utf8.len", "utf8.offset"
+}
+
+local annotations = {
+    "boolean", "string", "number", "thread", "userdata", "any", "never", 
+    "Instance", "Vector3", "CFrame", "Color3", "BrickColor", "UDim", "UDim2", 
+    "TweenInfo", "Ray", "Region3", "Vector2", "Rect", "Axes", "Faces", "Font"
+}
+
+local function highlightText(rawText)
+    if not rawText or rawText == "" then return "" end
+    local text = rawText:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;")
+    local snippets = {}
+
+    local function substitute(pattern, color)
         text = text:gsub(pattern, function(match)
-            table.insert(tokens, '<font color="' .. color .. '">' .. match .. '</font>')
-            return "\0TK" .. #tokens .. "\0"
+            local placeholder = "\0" .. #snippets + 1 .. "\0"
+            snippets[placeholder] = '<font color="' .. color .. '">' .. match .. '</font>'
+            return placeholder
         end)
     end
 
-    tokenize("%-%-.+$", "#569cd6")
-    tokenize("%f[%d]%d+%.?%d*%f[%D]", "#b5cea8")
+    substitute("%-%-.-$", "#6a9955")
+    substitute('"[^"\\]*(?:\\.[^"\\]*)*"', "#ce9178")
+    substitute("'[^'\\\\]*(?:\\.[^'\\\\]*)*'", "#ce9178")
+    substitute("%d+%.?%d*", "#b5cea8")
 
-    local keywords = {"local", "if", "then", "end", "true", "false", "function", "return", "nil", "in", "do", "for", "while", "repeat", "until", "elseif", "else", "break"}
-    for _, kw in ipairs(keywords) do
-        tokenize("(%f[%a]" .. kw .. "%f[%A])", "#569cd6")
+    for _, fn in ipairs(functions) do
+        substitute("([^%w_%z])(" .. fn .. ")(%f[%D])", "%1<font color=\"#DCDCAA\">%2</font>%3")
+        substitute("^(%z?" .. fn .. ")(%f[%D])", "<font color=\"#DCDCAA\">%1</font>%2")
     end
 
-    for i = #tokens, 1, -1 do
-        text = text:gsub("\0TK" .. i .. "\0", tokens[i])
+    for _, c in ipairs(constants) do
+        substitute("([^%w_%z])(" .. c .. ")(%f[%D])", "%1<font color=\"#569CD6\">%2</font>%3")
+        substitute("^(%z?" .. c .. ")(%f[%D])", "<font color=\"#569CD6\">%1</font>%2")
+    end
+
+    for _, ann in ipairs(annotations) do
+        substitute("([^%w_%z])(" .. ann .. ")(%f[%D])", "%1<font color=\"#4EC9B0\">%2</font>%3")
+        substitute("^(%z?" .. ann .. ")(%f[%D])", "<font color=\"#4EC9B0\">%1</font>%2")
+    end
+
+    for _, kw in ipairs(keywords) do
+        substitute("([^%w_%z])(" .. kw .. ")(%f[%D])", "%1<font color=\"#007ACC\">%2</font>%3")
+        substitute("^(%z?" .. kw .. ")(%f[%D])", "<font color=\"#007ACC\">%1</font>%2")
+    end
+
+    for placeholder, html in pairs(snippets) do
+        text = text:gsub(placeholder, html)
     end
 
     return text
@@ -217,7 +388,6 @@ HighlightLabel.BackgroundTransparency = 1
 HighlightLabel.RichText = true
 HighlightLabel.TextWrapped = true
 HighlightLabel.Text = ""
-HighlightLabel.TextColor3 = currentTheme.highlight
 HighlightLabel.TextSize = 12
 HighlightLabel.Font = Enum.Font.Code
 HighlightLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -232,8 +402,8 @@ CodeBox.ClearTextOnFocus = false
 CodeBox.MultiLine = true
 CodeBox.TextWrapped = true
 CodeBox.Text = tabs[1].code
-CodeBox.TextColor3 = currentTheme.text
-CodeBox.TextTransparency = 0.25
+CodeBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+CodeBox.TextTransparency = 1
 CodeBox.TextSize = 12
 CodeBox.Font = Enum.Font.Code
 CodeBox.TextXAlignment = Enum.TextXAlignment.Left
@@ -243,14 +413,27 @@ CodeBox.Parent = EditorScroll
 local tabButtons = {}
 local updateTabs
 
+local function updateLineNumbers(text)
+    local count = 1
+    for _ in text:gmatch("\n") do
+        count = count + 1
+    end
+    local linesStr = ""
+    for i = 1, count do
+        linesStr = linesStr .. i .. "\n"
+    end
+    LineNumBar.Text = linesStr
+end
+
 CodeBox:GetPropertyChangedSignal("Text"):Connect(function()
     HighlightLabel.Text = highlightText(CodeBox.Text)
     tabs[currentTabIdx].code = CodeBox.Text
+    updateLineNumbers(CodeBox.Text)
 end)
 
 local SnippetSidebar = Instance.new("ScrollingFrame")
 SnippetSidebar.Size = UDim2.new(0, 50, 1, -80)
-SnippetSidebar.Position = UDim2.new(1, -380, 0, 0)
+SnippetSidebar.Position = UDim2.new(1, -560, 0, 0)
 SnippetSidebar.BackgroundColor3 = currentTheme.panel
 SnippetSidebar.BorderSizePixel = 0
 SnippetSidebar.CanvasSize = UDim2.new(0, 0, 0, 370)
@@ -293,7 +476,7 @@ createSnippetBtn("nil", 330, "nil")
 
 local HelperPanel = Instance.new("Frame")
 HelperPanel.Size = UDim2.new(0, 160, 1, 0)
-HelperPanel.Position = UDim2.new(1, -330, 0, 0)
+HelperPanel.Position = UDim2.new(1, -505, 0, 0)
 HelperPanel.BackgroundColor3 = currentTheme.panel
 HelperPanel.BorderSizePixel = 0
 HelperPanel.Parent = Workspace
@@ -364,14 +547,10 @@ local function analyzeCode()
             table.insert(issues, "• Extra closing brace '}'")
         end
         
-        local func, parseErr = loadstring(text)
+        local _, parseErr = loadstring(text)
         if parseErr then
             parseErr = parseErr:gsub(":%d+: ", "")
             table.insert(issues, "• Syntax: " .. parseErr)
-        else
-            if not text:find("%(") and not text:find("=") and not text:find("local") and not text:find("if") and not text:find("return") then
-                table.insert(issues, "• Incomplete statement or expression.")
-            end
         end
     end
     
@@ -389,7 +568,7 @@ task.spawn(analyzeCode)
 
 local ConsolePanel = Instance.new("Frame")
 ConsolePanel.Size = UDim2.new(0, 170, 1, 0)
-ConsolePanel.Position = UDim2.new(1, -170, 0, 0)
+ConsolePanel.Position = UDim2.new(1, -340, 0, 0)
 ConsolePanel.BackgroundColor3 = currentTheme.panel
 ConsolePanel.BorderSizePixel = 0
 ConsolePanel.Parent = Workspace
@@ -431,6 +610,26 @@ local function logMessage(msg, isSuccess)
     local prefix = isSuccess and "[SUCCESS]: " or "[ERROR]: "
     ConsoleLog.Text = ConsoleLog.Text .. "\n<font color=\"" .. colorHex .. "\">" .. prefix .. msg .. "</font>"
 end
+
+local ThemePanel = Instance.new("ScrollingFrame")
+ThemePanel.Size = UDim2.new(0, 160, 1, 0)
+ThemePanel.Position = UDim2.new(1, -170, 0, 0)
+ThemePanel.BackgroundColor3 = currentTheme.panel
+ThemePanel.BorderSizePixel = 0
+ThemePanel.CanvasSize = UDim2.new(0, 0, 0, 300)
+ThemePanel.ScrollBarThickness = 2
+ThemePanel.Parent = Workspace
+
+local ThemeTitle = Instance.new("TextLabel")
+ThemeTitle.Size = UDim2.new(1, -10, 0, 24)
+ThemeTitle.Position = UDim2.new(0, 8, 0, 4)
+ThemeTitle.BackgroundTransparency = 1
+ThemeTitle.Text = "Themes"
+ThemeTitle.TextColor3 = currentTheme.title
+ThemeTitle.TextSize = 11
+ThemeTitle.Font = Enum.Font.Code
+ThemeTitle.TextXAlignment = Enum.TextXAlignment.Left
+ThemeTitle.Parent = ThemePanel
 
 local ActionBar = Instance.new("Frame")
 ActionBar.Size = UDim2.new(1, 0, 0, 70)
@@ -500,7 +699,6 @@ updateTabs = function()
         table.insert(tabButtons, tBtn)
     end
     
-    -- Add Tab Button (+)
     local addBtn = Instance.new("TextButton")
     addBtn.Size = UDim2.new(1, 0, 0, 28)
     addBtn.BackgroundColor3 = currentTheme.btnBg
@@ -525,8 +723,8 @@ updateTabs = function()
     TabBar.CanvasSize = UDim2.new(0, 0, 0, (#tabs + 1) * 32)
 end
 
-local themeNames = {"light", "midnight", "amber", "dark", "sky"}
-local themeKeys = {"white", "midnight", "amber", "dark", "sky"}
+local themeNames = {"light", "midnight", "amber", "dark", "sky", "matrix", "sunset", "cyberpunk", "ocean", "coffee", "lavender", "emerald", "crimson", "gold", "slate"}
+local themeKeys = {"white", "midnight", "amber", "dark", "sky", "matrix", "sunset", "cyberpunk", "ocean", "coffee", "lavender", "emerald", "crimson", "gold", "slate"}
 local themeButtons = {}
 
 local function applyTheme(themeName)
@@ -540,14 +738,15 @@ local function applyTheme(themeName)
     TitleLabel.TextColor3 = t.title
     CloseBtn.TextColor3 = t.title
     LineNumBar.TextColor3 = t.lineNum
-    HighlightLabel.TextColor3 = t.highlight
-    CodeBox.TextColor3 = t.text
+    CodeBox.TextColor3 = Color3.fromRGB(255, 255, 255)
     TabBar.BackgroundColor3 = t.panel
     SnippetSidebar.BackgroundColor3 = t.panel
     HelperPanel.BackgroundColor3 = t.panel
     HelperTitle.TextColor3 = t.title
     ConsolePanel.BackgroundColor3 = t.panel
     ConsoleTitle.TextColor3 = t.title
+    ThemePanel.BackgroundColor3 = t.panel
+    ThemeTitle.TextColor3 = t.title
     ActionBar.BackgroundColor3 = t.topBar
     
     for _, btn in ipairs(snippetButtons) do
@@ -572,16 +771,30 @@ local function applyTheme(themeName)
     updateTabs()
 end
 
-local startX = 294
+local themeY = 32
 for i, name in ipairs(themeNames) do
     local key = themeKeys[i]
-    local tBtn = createActionBtn(name, startX, 52)
+    local tBtn = Instance.new("TextButton")
+    tBtn.Size = UDim2.new(1, -16, 0, 26)
+    tBtn.Position = UDim2.new(0, 8, 0, themeY)
+    tBtn.BackgroundColor3 = currentTheme.btnBg
+    tBtn.Text = name
+    tBtn.TextColor3 = currentTheme.btnText
+    tBtn.TextSize = 10
+    tBtn.Font = Enum.Font.Code
+    tBtn.Parent = ThemePanel
+    
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 4)
+    corner.Parent = tBtn
+    
     tBtn.MouseButton1Click:Connect(function()
         applyTheme(key)
     end)
     table.insert(themeButtons, tBtn)
-    startX = startX + 56
+    themeY = themeY + 30
 end
+ThemePanel.CanvasSize = UDim2.new(0, 0, 0, themeY + 10)
 
 local isInjected = false
 
@@ -614,3 +827,5 @@ ExecBtn.MouseButton1Click:Connect(function()
 end)
 
 updateTabs()
+updateLineNumbers(CodeBox.Text)
+HighlightLabel.Text = highlightText(CodeBox.Text)
